@@ -1,4 +1,4 @@
-# golang-http-api
+# exante-golang-http-api
 
 Golang library for XNT Ltd. HTTP API service provides access to actual endpoints (https://api-live.exante.eu/api-docs/)
 
@@ -6,14 +6,14 @@ Golang library for XNT Ltd. HTTP API service provides access to actual endpoints
 
 To install golang-http-api library, use ```go get```:
 ```
-$ go get github.com/xntltd/golang-http-api
+$ go get github.com/EverID/exante-golang-http-api
 ```
 
 ### Staying up to date
 
 To update to the latest version, use
 ```
-$ go get -u github.com/xntltd/golang-http-api
+$ go get -u github.com/EverID/exante-golang-http-api
 ```
 
 ### Developing golang-http-api
@@ -22,7 +22,7 @@ If you wish to work on golang-http-api itself, you will first need Go installed 
 
 Next, using Git, clone the repository via ```git clone``` command 
 ```
-git clone https://github.com/xntltd/golang-http-api.git
+git clone https://github.com/EverID/exante-golang-http-api.git
 ```
 
 ## Basic usage
@@ -89,4 +89,4 @@ All public HTTP API methods declared in ```api.go``` file
 
 ### License
 
-Released under the [GNU GPL License](https://github.com/xntltd/golang-http-api/blob/main/LICENSE)
+Released under the [GNU GPL License](https://github.com/EverID/exante-golang-http-api/blob/main/LICENSE)
