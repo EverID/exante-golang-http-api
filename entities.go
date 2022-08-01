@@ -494,4 +494,5 @@ type OrderSentTypeV3 struct {
 	TakeProfit     string `json:"takeProfit,omitempty"`
 	StopLoss       string `json:"stopLoss,omitempty"`
 	SymbolID       string `json:"symbolId"`
+	LimitPrice     string `json:"limitPrice"`
 }
