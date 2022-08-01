@@ -530,6 +530,18 @@ func (h HTTPApi) GetLastQuote(symbol string) (*Quote, error) {
 	return m, err
 }
 
+// GetLastQuoteV3 return the last quote for the specified financial instrument
+func (h HTTPApi) GetLastQuoteV3(symbol string) ([]QuoteV3, error) {
+	m := NewQuoteV3Arr()
+	err := h.get(m, requestData{
+		action: feedAction,
+		pathParams: joinWithSlashSeparator(
+			[]string{symbol, lastAction},
+		),
+	})
+	return *m, err
+}
+
 // GetOHLCTrades return the list of OHLC candles
 // for the specified financial instrument and duration
 func (h HTTPApi) GetOHLCTrades(symbol string, duration int,

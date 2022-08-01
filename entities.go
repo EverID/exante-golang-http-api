@@ -51,6 +51,9 @@ func NewGroups() *Groups { return new(Groups) }
 // NewQuote constructor
 func NewQuote() *Quote { return new(Quote) }
 
+// NewQuoteV3 constructor
+func NewQuoteV3Arr() *[]QuoteV3 { return new([]QuoteV3) }
+
 // NewOHLCTrades constructor
 func NewOHLCTrades() *OHLCTrades { return new(OHLCTrades) }
 
@@ -266,6 +269,23 @@ type Quote struct {
 	SymbolID  int    `json:"symbolId"`
 	Bid       string `json:"bid"`
 	Ask       string `json:"ask"`
+}
+
+// QuoteV3 model
+type QuoteV3 struct {
+	Timestamp int64  `json:"timestamp"`
+	SymbolID  string `json:"symbolId"`
+	Bid       []Bid  `json:"bid"`
+	Ask       []Ask  `json:"ask"`
+}
+
+type Bid struct {
+	Value string `json:"value"`
+	Size  string `json:"size"`
+}
+type Ask struct {
+	Value string `json:"value"`
+	Size  string `json:"size"`
 }
 
 // OHLCQuote model
