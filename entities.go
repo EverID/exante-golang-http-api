@@ -396,6 +396,11 @@ type OrderV3 struct {
 // OrdersV3 model
 type OrdersV3 []OrderV3
 
+// OrdersV3 response
+type OrderV3Response struct {
+	OrderID string `json:"orderId"`
+}
+
 // CurrencyPos model
 type CurrencyPos struct {
 	Code           string `json:"code"`

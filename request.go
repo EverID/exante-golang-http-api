@@ -260,17 +260,17 @@ func (h HTTPApi) buildURL(u requestData) string {
 	return apiURL
 }
 
-func (h HTTPApi) get(m interface{}, u requestData) error {
-	err := h.fetch(http.MethodGet, m, u, emptyPostPayload)
+func (h HTTPApi) get(m interface{}, rm interface{}, u requestData) error {
+	err := h.fetch(http.MethodGet, m, rm, u, emptyPostPayload)
 	return err
 }
 
-func (h HTTPApi) post(m interface{}, u requestData) error {
+func (h HTTPApi) post(m interface{}, rm interface{}, u requestData) error {
 	objByte, err := h.preparePostPayload(m)
 	if err != nil {
 		return err
 	}
-	err = h.fetch(http.MethodPost, m, u, objByte)
+	err = h.fetch(http.MethodPost, m, rm, u, objByte)
 	return err
 }
 
@@ -314,7 +314,7 @@ func (h HTTPApi) runStream(u requestData) (chan []byte, chan bool) {
 }
 
 func (h HTTPApi) fetch(
-	httpMethod string, m interface{}, u requestData, payload *bytes.Reader) error {
+	httpMethod string, m interface{}, rm interface{}, u requestData, payload *bytes.Reader) error {
 
 	resp, err := h.request(httpMethod, h.buildURL(u), h.getAuth(u), payload)
 	if err != nil {
@@ -324,7 +324,7 @@ func (h HTTPApi) fetch(
 	if err != nil {
 		return err
 	}
-	err = h.serialize(preparedData, m)
+	err = h.serialize(preparedData, m, rm)
 	return err
 }
 
@@ -339,14 +339,18 @@ func (h HTTPApi) processResponse(resp *http.Response) ([]byte, error) {
 		responseBody, _ = ioutil.ReadAll(resp.Body)
 		defer resp.Body.Close()
 	}
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf(
-			"Response status code - %d \n %s", resp.StatusCode, responseBody)
+	if resp.StatusCode == http.StatusOK || resp.StatusCode == http.StatusCreated {
+		return responseBody, nil
 	}
-	return responseBody, nil
+	return nil, fmt.Errorf(
+		"Response status code - %d \n %s", resp.StatusCode, responseBody)
 }
 
-func (h HTTPApi) serialize(data []byte, model interface{}) (err error) {
+func (h HTTPApi) serialize(data []byte, model interface{}, responseModel interface{}) (err error) {
+	if responseModel != nil {
+		err = json.Unmarshal(data, &responseModel)
+		return
+	}
 	err = json.Unmarshal(data, &model)
 	return
 }
