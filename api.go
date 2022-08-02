@@ -200,7 +200,7 @@ type ReplaceOrderPayload struct {
 // GetUserAccounts return the list of user accounts and their statuses
 func (h HTTPApi) GetUserAccounts() (*UserAccounts, error) {
 	m := NewUserAccounts()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:  accountsAction,
 		version: h.getVersion(),
 	})
@@ -210,7 +210,7 @@ func (h HTTPApi) GetUserAccounts() (*UserAccounts, error) {
 // GetCurrencies return the list of available currencies
 func (h HTTPApi) GetCurrencies() (*Сurrencys, error) {
 	m := NewСurrencys()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:  crossratesAction,
 		version: h.getVersion(),
 	})
@@ -220,7 +220,7 @@ func (h HTTPApi) GetCurrencies() (*Сurrencys, error) {
 // GetExchanges return list of exchanges
 func (h HTTPApi) GetExchanges() (*Exchanges, error) {
 	m := NewExchanges()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:  exchangesAction,
 		version: h.getVersion(),
 	})
@@ -230,7 +230,7 @@ func (h HTTPApi) GetExchanges() (*Exchanges, error) {
 // GetChangesV1 return the list of daily changes for all or requested instruments
 func (h HTTPApi) GetChangesV1(symbolIDs ...string) (*ChangesV1, error) {
 	m := NewChangesV1()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     changeAction,
 		pathParams: joinWithCommaSeparator(symbolIDs),
 		version:    APIv1,
@@ -241,7 +241,7 @@ func (h HTTPApi) GetChangesV1(symbolIDs ...string) (*ChangesV1, error) {
 // GetChangesV2 return the list of daily changes for all or requested instruments
 func (h HTTPApi) GetChangesV2(symbolIDs ...string) (*ChangesV2, error) {
 	m := NewChangesV2()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     changeAction,
 		pathParams: joinWithCommaSeparator(symbolIDs),
 		version:    APIv2,
@@ -252,7 +252,7 @@ func (h HTTPApi) GetChangesV2(symbolIDs ...string) (*ChangesV2, error) {
 // GetChangesV3 return the list of daily changes for all or requested instruments
 func (h HTTPApi) GetChangesV3(symbolIDs ...string) (*ChangesV3, error) {
 	m := NewChangesV3()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     changeAction,
 		pathParams: joinWithCommaSeparator(symbolIDs),
 		version:    APIv3,
@@ -263,7 +263,7 @@ func (h HTTPApi) GetChangesV3(symbolIDs ...string) (*ChangesV3, error) {
 // GetSymbolsByGroupV1 return financial instruments which belong to specified group
 func (h HTTPApi) GetSymbolsByGroupV1(group string) (*SymbolsV1, error) {
 	m := NewSymbolsV1()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     groupsAction,
 		pathParams: group,
 		version:    APIv1,
@@ -274,7 +274,7 @@ func (h HTTPApi) GetSymbolsByGroupV1(group string) (*SymbolsV1, error) {
 // GetSymbolsByGroupV2 return financial instruments which belong to specified group
 func (h HTTPApi) GetSymbolsByGroupV2(group string) (*SymbolsV2, error) {
 	m := NewSymbolsV2()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     groupsAction,
 		pathParams: group,
 		version:    APIv2,
@@ -285,7 +285,7 @@ func (h HTTPApi) GetSymbolsByGroupV2(group string) (*SymbolsV2, error) {
 // GetSymbolsByGroupV3 return financial instruments which belong to specified group
 func (h HTTPApi) GetSymbolsByGroupV3(group string) (*SymbolsV3, error) {
 	m := NewSymbolsV3()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     groupsAction,
 		pathParams: group,
 		version:    APIv3,
@@ -297,7 +297,7 @@ func (h HTTPApi) GetSymbolsByGroupV3(group string) (*SymbolsV3, error) {
 // symbolType: instument type like STOCK, FUTURE, BOND, CURRENCY etc
 func (h HTTPApi) GetSymbolsByTypeV1(symbolType string) (*SymbolsV1, error) {
 	m := NewSymbolsV1()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     typesAction,
 		pathParams: symbolType,
 		version:    APIv1,
@@ -309,7 +309,7 @@ func (h HTTPApi) GetSymbolsByTypeV1(symbolType string) (*SymbolsV1, error) {
 // symbolType: instument types like STOCK, FUTURE, BOND, CURRENCY etc
 func (h HTTPApi) GetSymbolsByTypeV2(symbolType string) (*SymbolsV2, error) {
 	m := NewSymbolsV2()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     typesAction,
 		pathParams: symbolType,
 		version:    APIv2,
@@ -321,7 +321,7 @@ func (h HTTPApi) GetSymbolsByTypeV2(symbolType string) (*SymbolsV2, error) {
 // symbolType: instument types like STOCK, FUTURE, BOND, CURRENCY etc
 func (h HTTPApi) GetSymbolsByTypeV3(symbolType string) (*SymbolsV3, error) {
 	m := NewSymbolsV3()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     typesAction,
 		pathParams: symbolType,
 		version:    APIv3,
@@ -332,7 +332,7 @@ func (h HTTPApi) GetSymbolsByTypeV3(symbolType string) (*SymbolsV3, error) {
 // GetSymbolsV1 return list of instruments available for authorized user
 func (h HTTPApi) GetSymbolsV1() (*SymbolsV1, error) {
 	m := NewSymbolsV1()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:  symbolsAction,
 		version: APIv1,
 	})
@@ -342,7 +342,7 @@ func (h HTTPApi) GetSymbolsV1() (*SymbolsV1, error) {
 // GetSymbolsV2 return list of instruments available for authorized user
 func (h HTTPApi) GetSymbolsV2() (*SymbolsV1, error) {
 	m := NewSymbolsV1()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:  symbolsAction,
 		version: APIv2,
 	})
@@ -352,7 +352,7 @@ func (h HTTPApi) GetSymbolsV2() (*SymbolsV1, error) {
 // GetSymbolsV3 return list of instruments available for authorized user
 func (h HTTPApi) GetSymbolsV3() (*SymbolsV3, error) {
 	m := NewSymbolsV3()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:  symbolsAction,
 		version: APIv3,
 	})
@@ -362,7 +362,7 @@ func (h HTTPApi) GetSymbolsV3() (*SymbolsV3, error) {
 // GetSymbolV1 return instrument available for authorized user
 func (h HTTPApi) GetSymbolV1(symbolID string) (*SymbolV1, error) {
 	m := NewSymbolV1()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     symbolsAction,
 		version:    APIv1,
 		pathParams: symbolID,
@@ -373,7 +373,7 @@ func (h HTTPApi) GetSymbolV1(symbolID string) (*SymbolV1, error) {
 // GetSymbolV2 return instrument available for authorized user
 func (h HTTPApi) GetSymbolV2(symbolID string) (*SymbolV2, error) {
 	m := NewSymbolV2()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     symbolsAction,
 		version:    APIv2,
 		pathParams: symbolID,
@@ -384,7 +384,7 @@ func (h HTTPApi) GetSymbolV2(symbolID string) (*SymbolV2, error) {
 // GetSymbolV3 return instrument available for authorized user
 func (h HTTPApi) GetSymbolV3(symbolID string) (*SymbolV3, error) {
 	m := NewSymbolV3()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     symbolsAction,
 		version:    APIv3,
 		pathParams: symbolID,
@@ -397,7 +397,7 @@ func (h HTTPApi) GetSymbolschedule(
 	symbolID string, useTypes bool) (*Schedule, error) {
 
 	m := NewSchedule()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action: symbolsAction,
 		pathParams: joinWithSlashSeparator(
 			[]string{symbolID, scheduleAction},
@@ -413,7 +413,7 @@ func (h HTTPApi) GetSymbolschedule(
 // GetTypes return list of known instrument types
 func (h HTTPApi) GetTypes() (*Types, error) {
 	m := NewTypes()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:  typesAction,
 		version: h.getVersion(),
 	})
@@ -423,7 +423,7 @@ func (h HTTPApi) GetTypes() (*Types, error) {
 // GetSymbolSpec return additional parameters for requested instrument
 func (h HTTPApi) GetSymbolSpec(symbol string) (*SymbolSpecification, error) {
 	m := NewSymbolSpecification()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action: symbolsAction,
 		pathParams: joinWithSlashSeparator(
 			[]string{symbol, specificationAction},
@@ -436,7 +436,7 @@ func (h HTTPApi) GetSymbolSpec(symbol string) (*SymbolSpecification, error) {
 // GetGroups return list of available instrument groups
 func (h HTTPApi) GetGroups() (*Groups, error) {
 	m := NewGroups()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:  groupsAction,
 		version: h.getVersion(),
 	})
@@ -447,7 +447,7 @@ func (h HTTPApi) GetGroups() (*Groups, error) {
 // has the nearest expiration in the group
 func (h HTTPApi) GetNearestV1(group string) (*SymbolsV1, error) {
 	m := NewSymbolsV1()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action: groupsAction,
 		pathParams: joinWithSlashSeparator(
 			[]string{group, nearestAction},
@@ -461,7 +461,7 @@ func (h HTTPApi) GetNearestV1(group string) (*SymbolsV1, error) {
 // has the nearest expiration in the group
 func (h HTTPApi) GetNearestV2(group string) (*SymbolsV2, error) {
 	m := NewSymbolsV2()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action: groupsAction,
 		pathParams: joinWithSlashSeparator(
 			[]string{group, nearestAction},
@@ -475,7 +475,7 @@ func (h HTTPApi) GetNearestV2(group string) (*SymbolsV2, error) {
 // has the nearest expiration in the group
 func (h HTTPApi) GetNearestV3(group string) (*SymbolsV3, error) {
 	m := NewSymbolsV3()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action: groupsAction,
 		pathParams: joinWithSlashSeparator(
 			[]string{group, nearestAction},
@@ -488,7 +488,7 @@ func (h HTTPApi) GetNearestV3(group string) (*SymbolsV3, error) {
 // GetSymbolsByExchV1 return the requested exchange financial instruments
 func (h HTTPApi) GetSymbolsByExchV1(exchange string) (*SymbolsV1, error) {
 	m := NewSymbolsV1()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     exchangesAction,
 		pathParams: exchange,
 		version:    APIv1,
@@ -499,7 +499,7 @@ func (h HTTPApi) GetSymbolsByExchV1(exchange string) (*SymbolsV1, error) {
 // GetSymbolsByExchV2 return the requested exchange financial instruments
 func (h HTTPApi) GetSymbolsByExchV2(exchange string) (*SymbolsV2, error) {
 	m := NewSymbolsV2()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     exchangesAction,
 		pathParams: exchange,
 		version:    APIv2,
@@ -510,7 +510,7 @@ func (h HTTPApi) GetSymbolsByExchV2(exchange string) (*SymbolsV2, error) {
 // GetSymbolsByExchV3 return the requested exchange financial instruments
 func (h HTTPApi) GetSymbolsByExchV3(exchange string) (*SymbolsV3, error) {
 	m := NewSymbolsV3()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     exchangesAction,
 		pathParams: exchange,
 		version:    APIv3,
@@ -521,7 +521,7 @@ func (h HTTPApi) GetSymbolsByExchV3(exchange string) (*SymbolsV3, error) {
 // GetLastQuote return the last quote for the specified financial instrument
 func (h HTTPApi) GetLastQuote(symbol string) (*Quote, error) {
 	m := NewQuote()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action: feedAction,
 		pathParams: joinWithSlashSeparator(
 			[]string{symbol, lastAction},
@@ -533,7 +533,7 @@ func (h HTTPApi) GetLastQuote(symbol string) (*Quote, error) {
 // GetLastQuoteV3 return the last quote for the specified financial instrument
 func (h HTTPApi) GetLastQuoteV3(symbol string) ([]QuoteV3, error) {
 	m := NewQuoteV3Arr()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action: feedAction,
 		pathParams: joinWithSlashSeparator(
 			[]string{symbol, lastAction},
@@ -564,7 +564,7 @@ func (h HTTPApi) GetOHLCTrades(symbol string, duration int,
 	if g.Stop != 0 {
 		u.queryStringParams["end"] = intToString(g.Stop)
 	}
-	err := h.get(m, u)
+	err := h.get(m, nil, u)
 	return m, err
 }
 
@@ -590,7 +590,7 @@ func (h HTTPApi) GetOHLCQuotes(symbol string, duration int,
 	if g.Stop != 0 {
 		u.queryStringParams["end"] = intToString(g.Stop)
 	}
-	err := h.get(m, u)
+	err := h.get(m, nil, u)
 	return m, err
 }
 
@@ -614,7 +614,7 @@ func (h HTTPApi) GetTicksByQuotes(
 	if g.Stop != 0 {
 		u.queryStringParams["end"] = intToString(g.Stop)
 	}
-	err := h.get(m, u)
+	err := h.get(m, nil, u)
 	return m, err
 }
 
@@ -638,7 +638,7 @@ func (h HTTPApi) GetTicksByTrades(
 	if g.Stop != 0 {
 		u.queryStringParams["end"] = intToString(g.Stop)
 	}
-	err := h.get(m, u)
+	err := h.get(m, nil, u)
 	return m, err
 }
 
@@ -649,7 +649,7 @@ func (h HTTPApi) GetAccountSummary(account, currency string,
 	m := NewSummary()
 	c := stringToUpperCase(currency)
 
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:  summaryAction,
 		version: h.getVersion(),
 		pathParams: joinWithSlashSeparator(
@@ -685,7 +685,7 @@ func (h HTTPApi) GetTransactionsV1(symbol string, opType []string,
 
 	queryStringData := h.getTransactionsQueryString(symbol, opType, p)
 	m := NewTransactionsV1()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		version:           APIv1,
 		queryStringParams: queryStringData,
 		action:            transactionsAction,
@@ -699,7 +699,7 @@ func (h HTTPApi) GetTransactionsV2(symbol string, opType []string,
 
 	queryStringData := h.getTransactionsQueryString(symbol, opType, p)
 	m := NewTransactionsV2()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		version:           APIv2,
 		queryStringParams: queryStringData,
 		action:            transactionsAction,
@@ -712,7 +712,7 @@ func (h HTTPApi) GetTransactionsV3(symbol string, opType []string,
 	p GetTransactionsOptionalPayload) (*TransactionsV3, error) {
 	queryStringData := h.getTransactionsQueryString(symbol, opType, p)
 	m := NewTransactionsV3()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		version:           APIv3,
 		queryStringParams: queryStringData,
 		action:            transactionsAction,
@@ -737,7 +737,7 @@ func (h HTTPApi) GetOrdersV1(g GetOrdersPayload) (*OrdersV1, error) {
 	if g.To > 0 {
 		u.queryStringParams["to"] = g.getToParam()
 	}
-	err := h.get(m, u)
+	err := h.get(m, nil, u)
 	return m, err
 }
 
@@ -758,7 +758,7 @@ func (h HTTPApi) GetOrdersV2(g GetOrdersPayload) (*OrdersV2, error) {
 	if g.To > 0 {
 		u.queryStringParams["to"] = g.getToParam()
 	}
-	err := h.get(m, u)
+	err := h.get(m, nil, u)
 	return m, err
 }
 
@@ -779,14 +779,14 @@ func (h HTTPApi) GetOrdersV3(g GetOrdersPayload) (*OrdersV3, error) {
 	if g.To > 0 {
 		u.queryStringParams["to"] = g.getToParam()
 	}
-	err := h.get(m, u)
+	err := h.get(m, nil, u)
 	return m, err
 }
 
 // GetOrderV1 return the order with specified identifier
 func (h HTTPApi) GetOrderV1(orderID string) (*OrderV1, error) {
 	m := NewOrderV1()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     ordersAction,
 		pathParams: orderID,
 		version:    APIv1,
@@ -798,7 +798,7 @@ func (h HTTPApi) GetOrderV1(orderID string) (*OrderV1, error) {
 // GetOrderV2 return the order with specified identifier
 func (h HTTPApi) GetOrderV2(orderID string) (*OrderV2, error) {
 	m := NewOrderV2()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     ordersAction,
 		pathParams: orderID,
 		version:    APIv2,
@@ -810,7 +810,7 @@ func (h HTTPApi) GetOrderV2(orderID string) (*OrderV2, error) {
 // GetOrderV3 return the order with specified identifier
 func (h HTTPApi) GetOrderV3(orderID string) (*OrderV3, error) {
 	m := NewOrderV3()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:     ordersAction,
 		pathParams: orderID,
 		version:    APIv3,
@@ -822,7 +822,7 @@ func (h HTTPApi) GetOrderV3(orderID string) (*OrderV3, error) {
 // GetActiveOrdersV1 return the list of active trading orders
 func (h HTTPApi) GetActiveOrdersV1() (*OrdersV1, error) {
 	m := NewOrdersV1()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:   activeOrdersAction,
 		version:  APIv1,
 		category: TRADEAPICategory,
@@ -833,7 +833,7 @@ func (h HTTPApi) GetActiveOrdersV1() (*OrdersV1, error) {
 // GetActiveOrdersV2 return the list of active trading orders
 func (h HTTPApi) GetActiveOrdersV2() (*OrdersV2, error) {
 	m := NewOrdersV2()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:   activeOrdersAction,
 		version:  APIv2,
 		category: TRADEAPICategory,
@@ -844,7 +844,7 @@ func (h HTTPApi) GetActiveOrdersV2() (*OrdersV2, error) {
 // GetActiveOrdersV3 return the list of active trading orders
 func (h HTTPApi) GetActiveOrdersV3() (*OrdersV3, error) {
 	m := NewOrdersV3()
-	err := h.get(m, requestData{
+	err := h.get(m, nil, requestData{
 		action:   activeOrdersAction,
 		version:  APIv3,
 		category: TRADEAPICategory,
@@ -854,7 +854,7 @@ func (h HTTPApi) GetActiveOrdersV3() (*OrdersV3, error) {
 
 // PlaceOrderV1 place new trading OrderV1
 func (h HTTPApi) PlaceOrderV1(o *OrderSentTypeV1) error {
-	err := h.post(o, requestData{
+	err := h.post(o, nil, requestData{
 		action:   ordersAction,
 		version:  APIv1,
 		category: TRADEAPICategory,
@@ -864,7 +864,7 @@ func (h HTTPApi) PlaceOrderV1(o *OrderSentTypeV1) error {
 
 // PlaceOrderV2 place new trading OrderV2
 func (h HTTPApi) PlaceOrderV2(o *OrderSentTypeV2) error {
-	err := h.post(o, requestData{
+	err := h.post(o, nil, requestData{
 		action:   ordersAction,
 		version:  APIv2,
 		category: TRADEAPICategory,
@@ -873,18 +873,19 @@ func (h HTTPApi) PlaceOrderV2(o *OrderSentTypeV2) error {
 }
 
 // PlaceOrderV3 place new trading OrderV3
-func (h HTTPApi) PlaceOrderV3(o *OrderSentTypeV3) error {
-	err := h.post(o, requestData{
+func (h HTTPApi) PlaceOrderV3(o *OrderSentTypeV3) ([]OrderV3Response, error) {
+	rm := new([]OrderV3Response)
+	err := h.post(o, rm, requestData{
 		action:   ordersAction,
 		version:  APIv3,
 		category: TRADEAPICategory,
 	})
-	return err
+	return *rm, err
 }
 
 // CancelOrder cancel trading order
 func (h HTTPApi) CancelOrder(orderID string, c CancelOrderPayload) error {
-	err := h.post(c, requestData{
+	err := h.post(c, nil, requestData{
 		action:     cancelOrder,
 		category:   TRADEAPICategory,
 		pathParams: orderID,
@@ -895,7 +896,7 @@ func (h HTTPApi) CancelOrder(orderID string, c CancelOrderPayload) error {
 
 // ReplaceOrder replace trading order
 func (h HTTPApi) ReplaceOrder(orderID string, r ReplaceOrderPayload) error {
-	err := h.post(r, requestData{
+	err := h.post(r, nil, requestData{
 		action:     replaceOrder,
 		category:   TRADEAPICategory,
 		pathParams: orderID,
